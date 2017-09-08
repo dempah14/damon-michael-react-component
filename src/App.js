@@ -16,7 +16,6 @@ export default class App extends Component {
 
   updateStateWhenClicked(event) {
     this.setState({ inFocus: event });
-    console.log(this.state.inFocus);
   }
 
   render() {
