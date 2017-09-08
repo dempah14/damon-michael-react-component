@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Shape from './components/Shape';
 
-class App extends Component {
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      inFocus: null
+    }
+
+    this.updateStateWhenClicked = this.updateStateWhenClicked.bind(this);
+  }
+
+  updateStateWhenClicked(event) {
+    this.setState({ inFocus: event });
+    console.log(this.state.inFocus);
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <Shape type='fa fa-thermometer-empty fa-3x' clickFunction={ this.updateStateWhenClicked } inFocus={ this.state.inFocus } />
+          <Shape type='fa fa-battery-half fa-3x' clickFunction={ this.updateStateWhenClicked } inFocus={ this.state.inFocus } />
+          <Shape type='fa fa-fighter-jet fa-3x' clickFunction={ this.updateStateWhenClicked } inFocus={ this.state.inFocus } />
+          <Shape type='fa fa-hourglass-half fa-3x' clickFunction={ this.updateStateWhenClicked } inFocus={ this.state.inFocus } />
+          <Shape type='fa fa-ship fa-3x' clickFunction={ this.updateStateWhenClicked } inFocus={ this.state.inFocus } />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
 }
-
-export default App;
